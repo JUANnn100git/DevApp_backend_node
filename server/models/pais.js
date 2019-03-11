@@ -1,4 +1,6 @@
 const mongoose = require('mongoose');
+const uniqueValidator = require('mongoose-unique-validator');
+
 
 let Schema = mongoose.Schema;
 
@@ -23,4 +25,5 @@ let paisSchema = new Schema({
     }
 });
 
+paisSchema.plugin(uniqueValidator, { message: '{PATH} debe ser único' });
 module.exports = mongoose.model('Pais', paisSchema);
