@@ -40,10 +40,24 @@ app.post('/pais', function(req, res) {
 app.put('/pais/:id', function(req, res) {
 
     let id = req.params.id;
+    let body = req.body;
 
-    res.json({
-        id
+    Pais.findByIdAndUpdate(id, (err, paisBD) => {
+
+        if (err) {
+            return res.status(400).json({
+                ok: false,
+                err
+            }); //400 Bad Request
+        }
+
+        res.json({
+            ok: true,
+            pais: paisDB
+        });
     });
+
+
 });
 
 app.delete('/pais/:id', function(req, res) {
