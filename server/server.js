@@ -3,6 +3,8 @@ require('./config/config');
 const express = require('express');
 const mongoose = require('mongoose');
 
+const cors = require('cors');
+
 const app = express();
 
 const bodyParser = require('body-parser');
@@ -12,6 +14,13 @@ app.use(bodyParser.urlencoded({ extended: false }))
 
 // parse application/json
 app.use(bodyParser.json())
+
+// habilitar cors
+app.use(cors({
+    origin: 'http://localhost:4200',
+    methods: ['GET'],
+    allowedHeaders: 'Origin, X-Requested-With, Content-Type, Accept'
+}));
 
 app.use(require('./routes/pais'));
 
