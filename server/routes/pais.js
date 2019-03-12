@@ -5,7 +5,24 @@ const Pais = require('../models/pais');
 const app = express();
 
 app.get('/pais', function(req, res) {
-    res.json('Get Paises Local');
+
+    Pais.find({})
+        .exec((err, paises) => {
+
+            if (err) {
+                return res.status(400).json({
+                    ok: false,
+                    err
+                }); //400 Bad Request
+            }
+
+            res.json({
+                ok: true,
+                paises
+            });
+
+        });
+
 });
 
 app.post('/pais', function(req, res) {
