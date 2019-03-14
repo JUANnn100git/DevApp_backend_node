@@ -17,7 +17,7 @@ app.use(bodyParser.json())
 
 // habilitar cors
 app.use(cors({
-    origin: 'http://localhost:4200',
+    origin: ['https://devapp-frontend-angular-cloud.firebaseapp.com', 'http://localhost:4200'],
     methods: ['GET'],
     allowedHeaders: 'Origin, X-Requested-With, Content-Type, Accept'
 }));
